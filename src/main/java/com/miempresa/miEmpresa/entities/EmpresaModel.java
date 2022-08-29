@@ -1,22 +1,33 @@
-package com.miempresa.miEmpresa.models;
+package com.miempresa.miEmpresa.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "empresa")
 public class EmpresaModel {
     // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "nombre", unique = true, nullable = false)
     private String nombre;
+    @Column(name = "documento", unique = true, nullable = false)
     private String documento;
+    @Column(name = "telefono")
     private String telefono;
+    @Column(name = "direccion")
     private String direccion;
+
     // usuario...
     // transaccion...
+
+    @Column(name = "creado")
     private LocalDate creado;
+    @Column(name = "modificado")
     private LocalDate modificado;
 
     // Getters & Settes
-
-
     public int getId() {
         return id;
     }

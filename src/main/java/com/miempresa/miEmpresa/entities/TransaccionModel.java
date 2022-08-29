@@ -1,19 +1,29 @@
-package com.miempresa.miEmpresa.models;
+package com.miempresa.miEmpresa.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "transaccion")
 public class TransaccionModel {
     // Atributos
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "concepto")
     private String concepto;
+    @Column(name = "monto")
     private String monto;
+
     // usuario...
     // empresa...
+
+    @Column(name = "creado")
     private LocalDate creado;
+    @Column(name = "actualizado")
     private LocalDate actualizado;
 
     //Getters & Setters
-
     public int getId() {
         return id;
     }
