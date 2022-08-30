@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class EmpleadoController {
 
     private EmpleadoService empleadoService;
+
     public EmpleadoController(EmpleadoService service){
         this.empleadoService = service;
     }
