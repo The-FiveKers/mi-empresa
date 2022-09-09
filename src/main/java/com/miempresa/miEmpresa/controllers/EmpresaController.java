@@ -29,4 +29,10 @@ public class EmpresaController {
         return this.empresaService.createEmpresa(request);
     }
 
+    //empresa delete 
+    @DeleteMapping("deleteempresa/{id}")
+    public Response deleteempresa(@PathVariable int id){
+        return this.empresaService.deleteempresaByID(id);
+    }
+
 }
