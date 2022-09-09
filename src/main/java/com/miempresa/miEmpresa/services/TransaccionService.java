@@ -26,4 +26,25 @@ public class TransaccionService {
         response.setMessage("transaccion registrada correctamente");
         return response;
     }
+    //CODIGO DAVID
+    // DELETE
+    // Se crea metodo para eliminar una trasaccion. Dicho metodo recibe el parametro id y usa la funcion deletId para eliminar las transacciones del Id solicitado
+    public Response deleteTransaccionById(int id){
+
+        Response response = new Response();
+        try{
+            this.transaccionRepository.deleteById(id);
+            response.setCode(200);
+            response.setMessage("Trasaccion eliminada correctamente");
+            return response;
+        }
+        // creamos una excepcion que nos retorna mensaje con error generado
+        catch (Exception ex){
+            response.setCode(500);
+            response.setMessage("Error " + ex.getMessage());
+            return response;
+        }
+
+    }
+    // FIN CODIGO DAVID
 }
