@@ -9,35 +9,78 @@ public class EmpleadoModel {
     // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "correo")
-    private String correo;
+    private int Id;
+
 
     // perfil...
     // rol...
     // empresa...
     // transaccion...
 
+
+    @Column(name = "email")
+    private String email;
+
+    @OneToOne
+    @JoinColumn(name = "profile")
+    private PerfilModel perfil;
+
+    //  @OneToMany
+    //  @JoinColumn(name = "role")
+    // private Enum_RoleName role;
+
+    @ManyToOne
+    @JoinColumn(name = "empresa")
+    private EmpresaModel empresa;
+
+    @ManyToOne
+    @JoinColumn(name = "transaccion")
+    private TransaccionModel transaccion;
+
     @Column(name = "creado")
     private LocalDate creado;
+
     @Column(name = "actualizado")
     private LocalDate actualizado;
 
-    //Getters & Setters
     public int getId() {
-        return id;
+        return Id;
     }
 
     public void setId(int id) {
-        this.id = id;
+        Id = id;
     }
 
-    public String getCorreo() {
-        return correo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public PerfilModel getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(PerfilModel perfil) {
+        this.perfil = perfil;
+    }
+
+    public EmpresaModel getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(EmpresaModel empresa) {
+        this.empresa = empresa;
+    }
+
+    public TransaccionModel getTransaccion() {
+        return transaccion;
+    }
+
+    public void setTransaccion(TransaccionModel transaccion) {
+        this.transaccion = transaccion;
     }
 
     public LocalDate getCreado() {
@@ -55,4 +98,8 @@ public class EmpleadoModel {
     public void setActualizado(LocalDate actualizado) {
         this.actualizado = actualizado;
     }
+
+
+    //Getters & Setters
+
 }

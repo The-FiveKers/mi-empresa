@@ -4,10 +4,7 @@ package com.miempresa.miEmpresa.controllers;
 import com.miempresa.miEmpresa.entities.EmpleadoModel;
 import com.miempresa.miEmpresa.services.EmpleadoService;
 import com.miempresa.miEmpresa.services.Response;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -29,4 +26,8 @@ public class EmpleadoController {
     public Response createEmpleado(@RequestBody EmpleadoModel request){
         return this.empleadoService.createEmpleado(request);
     }
-}
+    @DeleteMapping("delete/{id}")
+    public Response deleteUsuario(@PathVariable int id){
+        return this.empleadoService.deleteEmpleadoById(id);
+    }
+  }
