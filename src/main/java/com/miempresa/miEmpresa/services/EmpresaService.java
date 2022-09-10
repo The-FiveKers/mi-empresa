@@ -48,14 +48,14 @@ public class EmpresaService {
     public Response createEmpresa(EmpresaModel data){
         Response response = new Response();
         // Validar nombre
-        ArrayList<EmpresaModel> existsNombre = this.empresaRepository.validarNombreEmpresa(data.getNombre());
+        ArrayList<EmpresaModel> existsNombre = this.empresaRepository.getEmpresaModelByNombre(data.getNombre());
         if(existsNombre != null && existsNombre.size() > 0){
             response.setCode(500);
             response.setMessage("Nombre de empresa ya esta registrado");
             return response;
         }
         // Validar documento
-        ArrayList<EmpresaModel> existsDocumento = this.empresaRepository.validarDocumentoEmpresa(data.getDocumento());
+        ArrayList<EmpresaModel> existsDocumento = this.empresaRepository.getEmpresaModelByDocumento(data.getDocumento());
         if(existsDocumento != null && existsDocumento.size() > 0){
             response.setCode(500);
             response.setMessage("Nombre de empresa ya esta registrado");

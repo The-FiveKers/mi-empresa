@@ -22,7 +22,7 @@ public class EmpresaModel {
     // usuario...
     // transaccion...
     @ManyToOne
-    @JoinColumn(name = "transaccionesId")
+    @JoinColumn(name = "transacciones")
     private TransaccionModel transacciones;
 
     @Column(name = "creado")

@@ -10,10 +10,8 @@ import java.util.ArrayList;
 @Repository
 public interface InterfaceEmpresa extends JpaRepository<EmpresaModel, Integer> {
     // validar que nombre no se repita
-    @Query("SELECT e FROM Empresa e WHERE e.nombreEmpresa = ?1")
-    ArrayList<EmpresaModel> validarNombreEmpresa(String nombreEmpresa);
+    ArrayList<EmpresaModel> getEmpresaModelByNombre(String nombreEmpresa);
 
     // Validar que el documentoEmpresa no se repita
-    @Query("SELECT e FROM Empresa e WHERE e.documentoEmpresa = ?1")
-    ArrayList<EmpresaModel> validarDocumentoEmpresa(String documentoEmpresa);
+    ArrayList<EmpresaModel> getEmpresaModelByDocumento(String documentoEmpresa);
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("enterprises/[id]/movements")
+//@RequestMapping("enterprises/[id]/movements")
 public class TransaccionController {
 
     private TransaccionService transaccionService;

@@ -24,12 +24,12 @@ public class EmpleadoModel {
     private String email;
 
     @OneToOne
-    @JoinColumn(name = "profile")
+    @JoinColumn(name = "perfil")
     private PerfilModel perfil;
 
-      @OneToMany
-      @JoinColumn(name = "role")
-      private RoleName role;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private RoleName role;
 
     @ManyToOne
     @JoinColumn(name = "empresa")
