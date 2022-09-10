@@ -1,5 +1,7 @@
 package com.miempresa.miEmpresa.entities;
 
+import com.miempresa.miEmpresa.Enumeracion.RoleName;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -25,9 +27,9 @@ public class EmpleadoModel {
     @JoinColumn(name = "profile")
     private PerfilModel perfil;
 
-    //  @OneToMany
-    //  @JoinColumn(name = "role")
-    // private Enum_RoleName role;
+      @OneToMany
+      @JoinColumn(name = "role")
+      private RoleName role;
 
     @ManyToOne
     @JoinColumn(name = "empresa")
@@ -99,7 +101,14 @@ public class EmpleadoModel {
         this.actualizado = actualizado;
     }
 
+    public RoleName getRole() {
+        return role;
+    }
 
-    //Getters & Setters
+    public void setRole(RoleName role) {
+        this.role = role;
+    }
+
+//Getters & Setters
 
 }

@@ -5,6 +5,7 @@ import com.miempresa.miEmpresa.repository.InterfaceTransaccion;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class TransaccionService {
@@ -47,4 +48,66 @@ public class TransaccionService {
 
     }
     // FIN CODIGO DAVID
+
+    // CODIGO DANIEL
+    public TransaccionModel selectById(int id){
+        Optional<TransaccionModel> exists = this.transaccionRepository.findById(id);
+        if (exists.isPresent()){
+            return exists.get();
+        }
+        else{
+            return null;
+        }
+    }
+
+    // Actualizar transaccion
+    public Response actualizarTransaccion(TransaccionModel data){
+        Response response = new Response();
+        if(data.getId() == 0){
+            response.setCode(500);
+            response.setMessage("Error, el Id de la transaccion no es valido" );
+            return response;
+        }
+        // Validar si la transaccion existe
+        TransaccionModel exists = selectById(data.getId());
+        if(exists == null){
+            response.setCode(500);
+            response.setMessage("Error, la transaccion no existe en la base de datos");
+            return response;
+        }
+        // Validar concepto
+        if (data.getConcepto().equals(null) || data.getConcepto().equals("")){
+            response.setCode(500);
+            response.setMessage("Error, concepto no especificado");
+            return response;
+        }
+        // Validar monto
+        if (data.getMonto().equals(null) || data.getMonto().equals("")){
+            response.setCode(500);
+            response.setMessage("Error, concepto no especificado");
+            return response;
+        }
+        // Validar fecha creado
+        if (data.getCreado().equals(null) || data.getCreado().equals("")){
+            response.setCode(500);
+            response.setMessage("Error, concepto no especificado");
+            return response;
+        }
+        // Validar fecha Actualizado
+        if (data.getActualizado().equals(null) || data.getActualizado().equals("")){
+            response.setCode(500);
+            response.setMessage("Error, concepto no especificado");
+            return response;
+        }
+        // Actualizar datos
+        exists.setConcepto(data.getConcepto());
+        exists.setMonto(data.getMonto());
+        exists.setCreado(data.getCreado());
+        exists.setActualizado(data.getActualizado());
+
+        this.transaccionRepository.save(exists);
+        response.setCode(200);
+        response.setMessage("Usuario modificado crectamente");
+        return response;
+    }
 }

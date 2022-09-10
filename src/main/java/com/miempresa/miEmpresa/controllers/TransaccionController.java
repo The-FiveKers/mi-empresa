@@ -1,5 +1,6 @@
 package com.miempresa.miEmpresa.controllers;
 
+import com.miempresa.miEmpresa.entities.EmpresaModel;
 import com.miempresa.miEmpresa.entities.TransaccionModel;
 import com.miempresa.miEmpresa.services.Response;
 import com.miempresa.miEmpresa.services.TransaccionService;
@@ -30,6 +31,11 @@ public class TransaccionController {
     @DeleteMapping("deletetransaccion/{id}")
     public Response deleteTransaccion(@PathVariable int id){
         return this.transaccionService.deleteTransaccionById(id);
+    }
+
+    @PutMapping("actualizartransaccion/{id}")
+    public Response updateTransaccion(@RequestBody TransaccionModel request) {
+        return this.transaccionService.actualizarTransaccion(request);
     }
 
 }

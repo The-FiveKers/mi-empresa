@@ -21,6 +21,9 @@ public class EmpresaModel {
 
     // usuario...
     // transaccion...
+    @ManyToOne
+    @JoinColumn(name = "transaccionesId")
+    private TransaccionModel transacciones;
 
     @Column(name = "creado")
     private LocalDate creado;
@@ -82,5 +85,13 @@ public class EmpresaModel {
 
     public void setModificado(LocalDate modificado) {
         this.modificado = modificado;
+    }
+
+    public TransaccionModel getTransacciones() {
+        return transacciones;
+    }
+
+    public void setTransacciones(TransaccionModel transacciones) {
+        this.transacciones = transacciones;
     }
 }
